@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeloVibe - Moda Clean e Elegante</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variáveis CSS */
+        :root {
+            --preto: #000000;
+            --branco: #ffffff;
+            --cinza-claro: #f8f8f8;
+            --cinza-medio: #e0e0e0;
+            --cinza-escuro: #333333;
+            --destaque: #2c2c2c;
+            --accent-color: #a0a0a0; /* Novo tom para detalhes */
+        }
+
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--branco);
+            color: var(--preto);
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden; /* Evita rolagem horizontal */
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--destaque);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--branco);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid var(--cinza-medio);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+        }
+        
+        .logo {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--preto);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1.5px;
+            flex-shrink: 0; /* Não encolhe */
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-grow: 1; /* Permite que a navegação ocupe espaço */
+            justify-content: center; /* Centraliza itens de navegação */
+            margin: 0 20px; /* Espaçamento entre logo e ícones */
+        }
+        
+        nav ul li {
+            margin: 0 20px;
+        }
+        
+        nav ul li a {
+            color: var(--preto);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--preto);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .header-icons {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .header-icons .search-box {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .header-icons .search-box input {
+            border: 1px solid var(--cinza-medio);
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 150px;
+            transition: width 0.3s ease;
+        }
+
+        .header-icons .search-box input:focus {
+            width: 200px;
+            outline: none;
+            border-color: var(--destaque);
+        }
+
+        .header-icons .search-box i {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--cinza-escuro);
+            cursor: pointer;
+        }
+        
+        .header-icons a {
+            color: var(--preto);
+            margin-left: 20px;
+            font-size: 20px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .header-icons a:hover {
+            color: var(--destaque);
+            transform: scale(1.1);
+        }
+
+        /* Banner Principal */
+        .banner {
+            background: var(--branco);
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--preto);
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
+            z-index: 1;
+        }
+
+        .banner-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            animation: slideInUp 1s ease-out;
+        }
+        
+        .banner-content h1 {
+            font-size: 56px;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            color: var(--preto);
+        }
+        
+        .banner-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            color: var(--cinza-escuro);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--preto);
+            color: var(--branco);
+            padding: 16px 40px;
+            border: 2px solid var(--preto);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            background-color: var(--branco);
+            color: var(--preto);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Seções Gerais */
+        .section-padding {
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            font-size: 40px;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+            text-align: center;
+            width: 100%;
+            color: var(--destaque);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--preto);
+        }
+        
+        /* Categorias */
+        .categorias {
+            background-color: var(--branco);
+            text-align: center;
+        }
+        
+        .categorias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .categoria-card {
+            background-color: var(--branco);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .categoria-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .categoria-card img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .categoria-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .categoria-content {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .categoria-content h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            letter-spacing: 1px;
+            color: var(--preto);
+        }
+        
+        /* Produtos em Destaque */
+        .produtos {
+            background-color: var(--cinza-claro);
+        }
+        
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .produto-card {
+            background-color: var(--branco);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .produto-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .produto-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .produto-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .produto-card .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--preto);
+            color: var(--branco);
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 3px;
+            z-index: 10;
+        }
+        
+        .produto-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .produto-titulo {
+            font-size: 19px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--preto);
+        }
+        
+        .produto-preco {
+            color: var(--destaque);
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .produto-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .produto-actions .btn {
+            padding: 10px 20px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            border-radius: 3px;
+            box-shadow: none;
+        }
+
+        .produto-actions .btn.details {
+            background-color: var(--cinza-escuro);
+            border-color: var(--cinza-escuro);
+        }
+
+        .produto-actions .btn.details:hover {
+            background-color: var(--branco);
+            color: var(--cinza-escuro);
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background-color: var(--branco);
+            color: var(--preto);
+            text-align: center;
+            border-top: 1px solid var(--cinza-medio);
+            border-bottom: 1px solid var(--cinza-medio);
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 25px;
+            font-size: 36px;
+            color: var(--destaque);
+        }
+        
+        .newsletter p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 17px;
+            color: var(--cinza-escuro);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 550px;
+            margin: 0 auto;
+            border: 1px solid var(--cinza-medio);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            background: var(--branco);
+            color: var(--preto);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+        }
+
+        .newsletter-form input::placeholder {
+            color: var(--cinza-medio);
+        }
+        
+        .newsletter-form button {
+            background-color: var(--preto);
+            color: var(--branco);
+            border: none;
+            padding: 0 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 15px;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: var(--destaque);
+            color: var(--branco);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--branco);
+            color: var(--preto);
+            padding: 60px 5% 30px;
+            border-top: 1px solid var(--cinza-medio);
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-col h3 {
+            font-size: 19px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            letter-spacing: 1px;
+            color: var(--destaque);
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--preto);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-col ul li a, .footer-col ul li {
+            color: var(--cinza-escuro);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-col ul li i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--preto);
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 25px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--branco);
+            border: 1px solid var(--cinza-medio);
+            border-radius: 50%; /* Circular */
+            margin-right: 12px;
+            color: var(--preto);
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--preto);
+            color: var(--branco);
+            border-color: var(--preto);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .payment-methods img {
+            height: 30px;
+            margin-right: 10px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .payment-methods img:hover {
+            opacity: 1;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--cinza-medio);
+            font-size: 14px;
+            color: var(--cinza-escuro);
+        }
+
+        /* Botão Voltar ao Topo */
+        #back-to-top {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 30px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button at the right side */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: var(--preto); /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 50%; /* Rounded corners */
+            font-size: 20px; /* Increase font size */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #back-to-top:hover {
+            background-color: var(--destaque);
+            transform: translateY(-3px);
+        }
+
+        /* Modal de Produto */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background-color: var(--branco);
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .modal-close-btn {
+            color: var(--cinza-escuro);
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close-btn:hover,
+        .modal-close-btn:focus {
+            color: var(--preto);
+        }
+
+        .modal-image {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .modal-details {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-details h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--preto);
+        }
+
+        .modal-details .price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--destaque);
+            margin-bottom: 20px;
+        }
+
+        .modal-details p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--cinza-escuro);
+            margin-bottom: 25px;
+        }
+
+        .modal-details .btn {
+            width: fit-content;
+            padding: 12px 30px;
+            font-size: 14px;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .logo {
+                font-size: 30px;
+            }
+            nav ul {
+                margin: 15px 0;
+                justify-content: space-around;
+                width: 100%;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .header-icons {
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            .header-icons .search-box {
+                margin-right: 10px;
+            }
+            .header-icons a {
+                margin-left: 15px;
+            }
+
+            .banner {
+                height: 70vh;
+            }
+            .banner-content h1 {
+                font-size: 44px;
+            }
+            .banner-content p {
+                font-size: 18px;
+            }
+            .section-title {
+                font-size: 36px;
+            }
+            .categoria-card img, .produto-card img {
+                height: 320px;
+            }
+            .modal-content {
+                flex-direction: column;
+                max-width: 600px;
+            }
+            .modal-image, .modal-details {
+                min-width: unset;
+                width: 100%;
+            }
+            .modal-image img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo {
+                margin-bottom: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                margin-bottom: 15px;
+            }
+            nav ul li {
+                margin: 5px 10px;
+            }
+            .header-icons .search-box input {
+                width: 120px;
+            }
+            .header-icons .search-box input:focus {
+                width: 180px;
+            }
+
+            .banner {
+                height: 60vh;
+            }
+            .banner-content h1 {
+                font-size: 36px;
+            }
+            .banner-content p {
+                font-size: 16px;
+            }
+            .btn {
+                padding: 12px 30px;
+                font-size: 13px;
+            }
+            .section-padding {
+                padding: 60px 5%;
+            }
+            .section-title {
+                font-size: 30px;
+                margin-bottom: 40px;
+            }
+            .categorias-grid, .produtos-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            .categoria-card img, .produto-card img {
+                height: 280px;
+            }
+            .newsletter h2 {
+                font-size: 30px;
+            }
+            .newsletter p {
+                font-size: 15px;
+            }
+            .newsletter-form {
+                flex-direction: column;
+                border: none;
+            }
+            .newsletter-form input {
+                border: 1px solid var(--cinza-medio);
+                margin-bottom: 10px;
+                border-radius: 5px;
+            }
+            .newsletter-form button {
+                padding: 12px 20px;
+                border-radius: 5px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-col ul {
+                padding-left: 0;
+            }
+            .footer-col ul li {
+                justify-content: center;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+            .payment-methods {
+                justify-content: center;
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 28px;
+            }
+            nav ul li {
+                margin: 5px 8px;
+                font-size: 14px;
+            }
+            .header-icons .search-box input {
+                width: 100px;
+            }
+            .header-icons .search-box input:focus {
+                width: 150px;
+            }
+            .header-icons a {
+                font-size: 18px;
+                margin-left: 10px;
+            }
+            .banner-content h1 {
+                font-size: 30px;
+            }
+            .banner-content p {
+                font-size: 14px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .categorias-grid, .produtos-grid {
+                grid-template-columns: 1fr;
+            }
+            .categoria-card img, .produto-card img {
+                height: 250px;
+            }
+            .modal-details h3 {
+                font-size: 28px;
+            }
+            .modal-details .price {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">HELOVIBE</a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Novidades</a></li>
+                    <li><a href="#">Coleção</a></li>
+                    <li><a href="#">Verão</a></li>
+                    <li><a href="#">Básicos</a></li>
+                    <li><a href="#">Acessórios</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-icons">
+                <div class="search-box">
+                    <input type="text" placeholder="Pesquisar...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <a href="#"><i class="fas fa-heart"></i></a> <!-- Ícone de Favoritos -->
+                <a href="#"><i class="fas fa-user"></i></a>
+                <a href="#"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="banner">
+        <img src="https://images.unsplash.com/photo-1581044777550-4cfa60732d52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80" alt="Modelo elegante em roupa clean" class="banner-image">
+        <div class="banner-content">
+            <h1>ELEGÂNCIA SIMPLES PARA O SEU ESTILO</h1>
+            <p>Descubra peças atemporais que combinam conforto, qualidade e sofisticação em cada detalhe. Vista-se com confiança e autenticidade.</p>
+            <a href="#" class="btn">Explorar Coleção</a>
+        </div>
+    </section>
+
+    <!-- Categorias -->
+    <section class="categorias section-padding">
+        <h2 class="section-title">Nossas Categorias</h2>
+        <div class="categorias-grid">
+            <div class="categoria-card">
+                <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Looks Minimalistas">
+                <div class="categoria-content">
+                    <h3>Looks Minimalistas</h3>
+                    <a href="#" class="btn">Explorar</a>
+                </div>
+            </div>
+            
+            <div class="categoria-card">
+                <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Roupas Básicas">
+                <div class="categoria-content">
+                    <h3>Básicos Atemporais</h3>
+                    <a href="#" class="btn">Explorar</a>
+                </div>
+            </div>
+            
+            <div class="categoria-card">
+                <img src="https://images.unsplash.com/photo-1582142306909-195724d3a58c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Vestidos">
+                <div class="categoria-content">
+                    <h3>Vestidos Elegantes</h3>
+                    <a href="#" class="btn">Explorar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos em Destaque -->
+    <section class="produtos section-padding">
+        <h2 class="section-title">Nossos Destaques</h2>
+        <div class="produtos-grid">
+            <div class="produto-card">
+                <span class="badge">Novo</span> <!-- Opcional: badge de "Novo" ou "Oferta" -->
+                <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Camiseta Básica">
+                <div class="produto-info">
+                    <h3 class="produto-titulo">Camiseta Essential</h3>
+                    <p class="produto-preco">R$ 129,90</p>
+                    <div class="produto-actions">
+                        <a href="#" class="btn add-to-cart">Comprar</a>
+                        <a href="#" class="btn details" data-product-id="1">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="produto-card">
+                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Calça Wide Leg">
+                <div class="produto-info">
+                    <h3 class="produto-titulo">Calça Wide Leg</h3>
+                    <p class="produto-preco">R$ 219,90</p>
+                    <div class="produto-actions">
+                        <a href="#" class="btn add-to-cart">Comprar</a>
+                        <a href="#" class="btn details" data-product-id="2">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="produto-card">
+                <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Vestido Midi">
+                <div class="produto-info">
+                    <h3 class="produto-titulo">Vestido Midi</h3>
+                    <p class="produto-preco">R$ 259,90</p>
+                    <div class="produto-actions">
+                        <a href="#" class="btn add-to-cart">Comprar</a>
+                        <a href="#" class="btn details" data-product-id="3">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="produto-card">
+                <span class="badge">Oferta</span>
+                <img src="https://images.unsplash.com/photo-1577401239170-897942555fb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Conjunto Premium">
+                <div class="produto-info">
+                    <h3 class="produto-titulo">Conjunto Premium</h3>
+                    <p class="produto-preco">R$ 349,90</p>
+                    <div class="produto-actions">
+                        <a href="#" class="btn add-to-cart">Comprar</a>
+                        <a href="#" class="btn details" data-product-id="4">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter section-padding">
+        <h2>Junte-se à HeloVibe</h2>
+        <p>Inscreva-se para receber novidades, lançamentos exclusivos, acesso antecipado a coleções e descontos especiais diretamente no seu e-mail.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Seu melhor e-mail" required>
+            <button type="submit">Assinar</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>HELOVIBE</h3>
+                <p>Moda clean e atemporal para quem valoriza peças de qualidade e design elegante. Vista-se com propósito.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Produtos</h3>
+                <ul>
+                    <li><a href="#">Novidades</a></li>
+                    <li><a href="#">Coleção Verão</a></li>
+                    <li><a href="#">Básicos Essenciais</a></li>
+                    <li><a href="#">Acessórios</a></li>
+                    <li><a href="#">Ofertas Especiais</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Ajuda</h3>
+                <ul>
+                    <li><a href="#">Trocas e Devoluções</a></li>
+                    <li><a href="#">Política de Entregas</a></li>
+                    <li><a href="#">Guia de Tamanhos</a></li>
+                    <li><a href="#">Fale Conosco</a></li>
+                    <li><a href="#">Perguntas Frequentes</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contato</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contato@helovibe.com</li>
+                    <li><i class="fas fa-phone"></i> (11) 9999-9999</li>
+                    <li><i class="fas fa-map-marker-alt"></i> São Paulo, Brasil</li>
+                </ul>
+                <h3 style="margin-top: 30px;">Pagamento</h3>
+                <div class="payment-methods">
+                    <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa">
+                    <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="Mastercard">
+                    <img src="https://img.icons8.com/color/48/000000/paypal.png" alt="PayPal">
+                    <img src="https://img.icons8.com/color/48/000000/boleto.png" alt="Boleto">
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 HELOVIBE - Todos os direitos reservados. Desenvolvido com paixão.</p>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <button onclick="topFunction()" id="back-to-top" title="Voltar ao Topo"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Modal de Detalhes do Produto (Simulado) -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-btn">&times;</span>
+            <div class="modal-image">
+                <img id="modal-product-image" src="" alt="Imagem do Produto">
+            </div>
+            <div class="modal-details">
+                <h3 id="modal-product-title">Nome do Produto</h3>
+                <p class="price" id="modal-product-price">R$ 000,00</p>
+                <p id="modal-product-description">Esta é uma descrição detalhada do produto, destacando suas qualidades, materiais e como ele se encaixa perfeitamente no seu estilo. Conforto e elegância em uma única peça.</p>
+                <a href="#" class="btn add-to-cart">Adicionar ao Carrinho</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados de produtos para o modal (simulado)
+        const productsData = {
+            1: {
+                title: "Camiseta Essential",
+                price: "R$ 129,90",
+                image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                description: "Nossa Camiseta Essential é a base perfeita para qualquer guarda-roupa. Feita com algodão orgânico de alta qualidade, oferece conforto inigualável e durabilidade. Ideal para o dia a dia ou para compor looks mais elaborados."
+            },
+            2: {
+                title: "Calça Wide Leg",
+                price: "R$ 219,90",
+                image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                description: "A Calça Wide Leg HeloVibe combina estilo e conforto. Com caimento impecável e tecido leve, é perfeita para criar looks modernos e sofisticados. Versátil para diversas ocasiões."
+            },
+            3: {
+                title: "Vestido Midi",
+                price: "R$ 259,90",
+                image: "https://images.unsplash.com/photo-1591369822096-ffd140ec948a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                description: "O Vestido Midi HeloVibe é a definição de elegância atemporal. Com design minimalista e tecido fluido, ele se adapta a qualquer silhueta, proporcionando um visual chique e confortável para eventos especiais ou o dia a dia."
+            },
+            4: {
+                title: "Conjunto Premium",
+                price: "R$ 349,90",
+                image: "https://images.unsplash.com/photo-1577401239170-897942555fb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                description: "Nosso Conjunto Premium oferece o máximo em sofisticação e versatilidade. Composto por peças que podem ser usadas juntas ou separadamente, é ideal para quem busca um guarda-roupa inteligente e elegante. Tecido de alta qualidade e acabamento impecável."
+            }
+            // Adicione seus novos produtos aqui, seguindo o formato:
+            /*
+            5: {
+                title: "Nome do Seu Novo Produto",
+                price: "R$ XXX,XX",
+                image: "URL_DA_IMAGEM_DO_SEU_PRODUTO",
+                description: "Descrição detalhada do seu novo produto."
+            },
+            */
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efeito de carregamento e hover para botões
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                    this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.3)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+                });
+            });
+            
+            // Simula adição ao carrinho
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Produto adicionado ao carrinho!');
+                });
+            });
+            
+            // Newsletter
+            const newsletterForm = document.querySelector('.newsletter-form');
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input').value;
+                alert(`Obrigado por assinar nossa newsletter com o email: ${email}`);
+                this.reset();
+            });
+
+            // Lógica do Modal de Produto
+            const productModal = document.getElementById('productModal');
+            const closeBtn = document.querySelector('.modal-close-btn');
+            const detailsButtons = document.querySelectorAll('.produto-actions .details');
+
+            detailsButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productId = this.dataset.productId;
+                    const product = productsData[productId];
+
+                    if (product) {
+                        document.getElementById('modal-product-image').src = product.image;
+                        document.getElementById('modal-product-title').innerText = product.title;
+                        document.getElementById('modal-product-price').innerText = product.price;
+                        document.getElementById('modal-product-description').innerText = product.description;
+                        productModal.style.display = 'flex'; // Usa flex para centralizar
+                    }
+                });
+            });
+
+            closeBtn.addEventListener('click', function() {
+                productModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target == productModal) {
+                    productModal.style.display = 'none';
+                }
+            });
+
+            // Botão Voltar ao Topo
+            const backToTopButton = document.getElementById("back-to-top");
+
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                    backToTopButton.style.display = "block";
+                } else {
+                    backToTopButton.style.display = "none";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            }
+            window.topFunction = topFunction; // Torna a função acessível globalmente
+        });
+    </script>
+</body>
+</html>
